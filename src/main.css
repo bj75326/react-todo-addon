@@ -1,0 +1,269 @@
+*{
+    box-sizing: border-box;
+    outline: none;
+}
+
+html{
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-feature-settings: "liga", "kern";
+    font-feature-settings: "liga", "kern";
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Varela Round', sans-serif;
+    color: #2E2E2E;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+.container{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ff9068;
+    background: -webkit-linear-gradient(45deg, #fd746c, #ff9068);
+    background: linear-gradient(45deg, #fd746c, #ff9068);
+    height: 100%;
+}
+
+.todo-app{
+    width: 325px;
+    max-width: 90%;
+    height: 560px;
+    max-height: 90%;
+    background: #fafafa;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(25, 25, 25, 0.25);
+    padding: .2rem 1rem;
+}
+
+.todo-title{
+    text-align: center;
+    margin: .2rem 0 .4rem;
+}
+
+.todo-list{
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    overflow-x: hidden;
+    width: 100%;
+    font-size: 1rem;
+    height: 60%;
+}
+
+.todo{
+    position: relative;
+    padding: 0 2.5rem 0 .75rem;
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.todo span{
+    position: relative;
+    opacity: 1;
+    text-transform: capitalize;
+    -webkit-transition: opacity 0.25s ease-out;
+    transition: opacity 0.25s ease-out;
+}
+
+.todo.todo-completed span{
+    opacity: 0.5;
+}
+
+.todo span:after{
+    content: "";
+    position: absolute;
+    display: block;
+    width: calc(100% + .5em);
+    left: -.25em;
+    height: 2px;
+    top: 50%;
+    border-radius: 1px;
+    background-color: #2e2e2e;
+    -webkit-transform-origin: center right;
+    transform-origin: center right;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+    transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.todo.todo-completed span:after{
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transform-origin: center left;
+    transform-origin: center left;
+}
+
+.todo:after{
+    font-family: FontAwesome;
+    content: "\f00c";
+    position: absolute;
+    right: .75rem;
+    color: #2ecc71;
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: opacity, 0.25s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform;
+    transition: transform, opacity, 0.25s cubic-bezier(0.55, 0, 0.1, 1), -webkit-transform;
+}
+
+.todo.todo-completed:after{
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.todo + .todo{
+    margin-top: .8rem;
+    padding-top: .8rem;
+}
+
+.todo + .todo:before{
+    content:"";
+    background: #e8ebed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px;
+}
+
+.todo-enter{
+    opacity: 0;
+    padding: 0;
+    margin-top: 0;
+    max-height: 0;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    -webkit-transition: opacity 500ms ease-out, max-height 500ms ease-out, padding 500ms ease-out, margin 500ms ease-out, -webkit-transform 750ms cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transition: opacity 500ms ease-out, transform 750ms cubic-bezier(0.87, -0.41, 0.19, 1.44), max-height 500ms ease-out, padding 500ms ease-out, margin 500ms ease-out, -webkit-transform 750ms cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+
+.todo-enter.todo-enter-active{
+    opacity: 1;
+    max-height: 100px;
+    padding-left: .75rem;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.todo-leave{
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    -webkit-transition: opacity 500ms ease-out, max-height 500ms ease-out, padding 500ms ease-out, margin 500ms ease-out, -webkit-transform 750ms cubic-bezier(0.87, -0.41, 0.19, 1.44);
+    transition: opacity 500ms ease-out, transform 750ms cubic-bezier(0.87, -0.41, 0.19, 1.44), max-height 500ms ease-out, padding 500ms ease-out, margin 500ms ease-out, -webkit-transform 750ms cubic-bezier(0.87, -0.41, 0.19, 1.44);
+}
+
+.todo-leave.todo-leave-active{
+    opacity: 0;
+    padding-top: 0;
+    margin-top: 0;
+    max-height: 0;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.todo-add{
+    width: 100%;
+    position: relative;
+    margin: 1.8rem 0;
+}
+
+.todo-add-input{
+    width: 100%;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+    background: #e8ebed;
+    border: 2px solid #e8ebed;
+    -webkit-transition: background .25s ease-out;
+    transition: background .25s ease-out;
+    font-size: 1.2rem;
+    font-family: inherit;
+}
+
+.todo-add-input:focus{
+    background: none;
+}
+
+.todo-add-btn{
+    width: 55px;
+    height: 55px;
+    border: 0;
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    background: #2ecc71;
+    font-size: 1.5rem;
+    color: #fafafa;
+    opacity: 0;
+    -webkit-transform: translate(0, -50%) scale(0) rotate(180deg);
+    transform: translate(0, -50%) scale(0) rotate(180deg);
+    -webkit-transition: opacity, 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44), -webkit-transform;
+    transition: transform, opacity, 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44), -webkit-transform;
+}
+
+.todo-add-input:focus + .todo-add-btn{
+    opacity: 1;
+    -webkit-transform: translate(20%, -50%) scale(1) rotate(0deg);
+    transform: translate(20%, -50%) scale(1) rotate(0deg);
+}
+
+.todo-add-btn:focus{
+    opacity: 1;
+    -webkit-transform: translate(20%, -50%) scale(1.1) rotate(0deg);
+    transform: translate(20%, -50%) scale(1.1) rotate(0deg);
+}
+
+.todo-add-btn:active{
+    opacity: 1;
+    -webkit-transition: opacity, 0.1s cubic-bezier(0.87, -0.41, 0.19, 1.44), -webkit-transform;
+    transition: transform, opacity, 0.1s cubic-bezier(0.87, -0.41, 0.19, 1.44), -webkit-transform;
+    -webkit-transform: translate(20%, -50%) scale(0.95) rotate(0deg);
+    transform: translate(20%, -50%) scale(0.95) rotate(0deg);
+}
+
+.todo-filter{
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    margin-top: -.7rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.todo-filter-link{
+    flex: 1;
+    text-align: center;
+}
+
+.todo-filter-link:nth-of-type(1){
+    color: #3498db;
+}
+.todo-filter-link:nth-of-type(2){
+    color: #e74c3c;
+}
+.todo-filter-link:nth-of-type(3){
+    color: #2ecc71;
+}
+
+.todo-filter .todo-filter-link:active i{
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
