@@ -16,7 +16,7 @@ html{
     user-select: none;
 }
 
-a {
+a, li {
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -223,6 +223,7 @@ body{
     font-size: 1.5rem;
     color: #fafafa;
     opacity: 0;
+    padding: 0;
     -webkit-transform: translate(0, -50%) scale(0) rotate(180deg);
     transform: translate(0, -50%) scale(0) rotate(180deg);
     -webkit-transition: opacity, 0.5s cubic-bezier(0.87, -0.41, 0.19, 1.44), -webkit-transform;
