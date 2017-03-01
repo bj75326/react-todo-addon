@@ -10,6 +10,16 @@ html{
     font-feature-settings: "liga", "kern";
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+a {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
 }
 
 html, body{
